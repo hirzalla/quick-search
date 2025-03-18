@@ -2,39 +2,33 @@
 A plugin that lets you search various OSRS-related platforms directly from your game chat using different commands.
 
 ## Usage
-Type `!search <platform> <query>` in your game chat to search.
+Type `!<platform> <query>` in your game chat to search.
 
 ## Supported Platforms
 
-### OSRS Wiki
-- **Prefixes**: `wiki`, `osrs`
-- **Examples**:
-    - `!search osrs vorkath guide`
-    - `!search wiki abyssal whip`
+### [OSRS Wiki](https://oldschool.runescape.wiki/)
+- **Prefixes**: `!wiki`, `!osrs`
+- **Example**: `!osrs abyssal whip`
 
 ### YouTube
-- **Prefixes**: `youtube`, `yt`
-- **Examples**:
-    - `!search youtube zulrah guide`
-    - `!search yt tob speedrun`
+- **Prefixes**: `!yt`, `!youtube`
+- **Example**: `!yt zulrah guide`
 
 ### Twitch
-- **Prefixes**: `twitch`, `ttv`
-- **Examples**:
-      - `!search twitch woox`
-      - `!search ttv b0aty`
+- **Prefixes**: `!ttv`, `!twitch`
+- **Example**: `!ttv streamer`
 
 ### Kick
-- **Prefix**: `kick`
-- **Examples**:
-  - `!search kick odablock`
+- **Prefix**: `!kick`
+- **Example**: `!kick streamer`
 
 ## Configurations
-Each platform can be enabled or disabled individually in the plugin settings:
+Each platform can be enabled or disabled individually in the plugin settings. The settings menu shows example commands for each platform:
 - Enable Wiki Search
 - Enable YouTube Search
 - Enable Twitch Search
 - Enable Kick Search
 
 ## Notes
-- Because of how the things work, your commands will be visible to everyone in your chat. Search responsibly 🙂
+- Your commands will be visible to others in chat - search responsibly 🙂
+- Using a platform prefix without a query will show you an example of how to use the command

@@ -21,7 +21,6 @@ import java.util.HashMap;
 		tags = {"search", "quick", "wiki", "osrs", "youtube", "yt", "kick", "twitch"}
 )
 public class QuickSearchPlugin extends Plugin {
-	private static final String COMMAND_PREFIX = "search";
 	private static final Map<String, String> URL_PATTERNS = new HashMap<>();
 
 	@Inject
@@ -37,14 +36,14 @@ public class QuickSearchPlugin extends Plugin {
 
 	private void initializeUrlPatterns() {
 		// Wiki
-		URL_PATTERNS.put("wiki", "https://oldschool.runescape.wiki/w/%s");
 		URL_PATTERNS.put("osrs", "https://oldschool.runescape.wiki/w/%s");
+		URL_PATTERNS.put("wiki", "https://oldschool.runescape.wiki/w/%s");
 		// YouTube
-		URL_PATTERNS.put("youtube", "https://www.youtube.com/results?search_query=%s");
 		URL_PATTERNS.put("yt", "https://www.youtube.com/results?search_query=%s");
+		URL_PATTERNS.put("youtube", "https://www.youtube.com/results?search_query=%s");
 		// Twitch
-		URL_PATTERNS.put("twitch", "https://www.twitch.tv/search?term=%s");
 		URL_PATTERNS.put("ttv", "https://www.twitch.tv/search?term=%s");
+		URL_PATTERNS.put("twitch", "https://www.twitch.tv/search?term=%s");
 		// Kick
 		URL_PATTERNS.put("kick", "https://kick.com/search?query=%s");
 		// Reddit
@@ -55,33 +54,51 @@ public class QuickSearchPlugin extends Plugin {
 	@Subscribe
 	public void onChatMessage(ChatMessage event) {
 		String message = event.getMessage();
-		if (!message.toLowerCase().startsWith("!" + COMMAND_PREFIX + " ")) {
+		if (!message.startsWith("!")) {
 			return;
 		}
 
-		String[] parts = message.split(" ", 3);
-		if (parts.length < 3) {
-			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Usage: !search {{ platform }} {{ query }}", null);
-			return;
-		}
-
-		String platform = parts[1].toLowerCase();
-		String query = parts[2];
+		String[] parts = message.substring(1).split(" ", 2);
+		String platform = parts[0].toLowerCase();
 
 		if (!URL_PATTERNS.containsKey(platform)) {
-			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Unsupported platform", null);
 			return;
 		}
 
+		if (parts.length < 2) {
+			String example = getExampleForPlatform(platform);
+			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Usage: " + example, null);
+			return;
+		}
+
+		String query = parts[1];
+
 		if (!isPlatformEnabled(platform)) {
-			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", platform + " search is disabled", null);
+			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", platform + " search is disabled. Enable it in the plugin settings.", null);
 			return;
 		}
 
 		String separator = (platform.equals("wiki") || platform.equals("osrs")) ? "_" : "+";
 		String url = String.format(URL_PATTERNS.get(platform), query.replace(" ", separator));
-
 		LinkBrowser.browse(url);
+	}
+
+	private String getExampleForPlatform(String platform) {
+		switch (platform) {
+			case "wiki":
+			case "osrs":
+				return "!osrs abyssal whip";
+			case "youtube":
+			case "yt":
+				return "!yt zulrah guide";
+			case "twitch":
+			case "ttv":
+				return "!ttv streamer";
+			case "kick":
+				return "!kick streamer";
+			default:
+				return "!" + platform + " {{ query }}";
+		}
 	}
 
 	private boolean isPlatformEnabled(String platform) {

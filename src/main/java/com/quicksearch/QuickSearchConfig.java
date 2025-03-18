@@ -9,7 +9,7 @@ public interface QuickSearchConfig extends Config {
 	@ConfigItem(
 			keyName = "enableWiki",
 			name = "Enable Wiki Search",
-			description = "Enables OSRS Wiki search (!osrs or !wiki)"
+			description = "Enables OSRS Wiki search (::osrs or ::wiki)"
 	)
 	default boolean enableWiki() {
 		return true;
@@ -18,7 +18,7 @@ public interface QuickSearchConfig extends Config {
 	@ConfigItem(
 			keyName = "enableYoutube",
 			name = "Enable YouTube Search",
-			description = "Enables YouTube search (!yt or !youtube)"
+			description = "Enables YouTube search (::yt or ::youtube)"
 	)
 	default boolean enableYoutube() {
 		return true;
@@ -27,7 +27,7 @@ public interface QuickSearchConfig extends Config {
 	@ConfigItem(
 			keyName = "enableKick",
 			name = "Enable Kick Search",
-			description = "Enables Kick search (!kick)"
+			description = "Enables Kick search (::kick)"
 	)
 	default boolean enableKick() {
 		return true;
@@ -36,7 +36,7 @@ public interface QuickSearchConfig extends Config {
 	@ConfigItem(
 			keyName = "enableTwitch",
 			name = "Enable Twitch Search",
-			description = "Enables Twitch search (!twitch or !ttv)"
+			description = "Enables Twitch search (::ttv or !twitch)"
 	)
 	default boolean enableTwitch() {
 		return true;

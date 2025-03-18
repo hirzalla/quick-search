@@ -9,7 +9,7 @@ import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
-import net.runelite.api.events.ChatMessage;
+import net.runelite.api.events.CommandExecuted;
 import net.runelite.client.util.LinkBrowser;
 import java.util.Map;
 import java.util.HashMap;
@@ -52,32 +52,26 @@ public class QuickSearchPlugin extends Plugin {
 	}
 
 	@Subscribe
-	public void onChatMessage(ChatMessage event) {
-		String message = event.getMessage();
-		if (!message.startsWith("!")) {
-			return;
-		}
-
-		String[] parts = message.substring(1).split(" ", 2);
-		String platform = parts[0].toLowerCase();
+	public void onCommandExecuted(CommandExecuted event) {
+		String platform = event.getCommand().toLowerCase();
 
 		if (!URL_PATTERNS.containsKey(platform)) {
 			return;
 		}
 
-		if (parts.length < 2) {
+		String[] arguments = event.getArguments();
+		if (arguments.length == 0) {
 			String example = getExampleForPlatform(platform);
 			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Usage: " + example, null);
 			return;
 		}
-
-		String query = parts[1];
 
 		if (!isPlatformEnabled(platform)) {
 			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", platform + " search is disabled. Enable it in the plugin settings.", null);
 			return;
 		}
 
+		String query = String.join(" ", arguments);
 		String separator = (platform.equals("wiki") || platform.equals("osrs")) ? "_" : "+";
 		String url = String.format(URL_PATTERNS.get(platform), query.replace(" ", separator));
 		LinkBrowser.browse(url);
@@ -87,17 +81,17 @@ public class QuickSearchPlugin extends Plugin {
 		switch (platform) {
 			case "wiki":
 			case "osrs":
-				return "!osrs abyssal whip";
+				return "::osrs abyssal whip";
 			case "youtube":
 			case "yt":
-				return "!yt zulrah guide";
+				return "::yt zulrah guide";
 			case "twitch":
 			case "ttv":
-				return "!ttv streamer";
+				return "::ttv streamer";
 			case "kick":
-				return "!kick streamer";
+				return "::kick streamer";
 			default:
-				return "!" + platform + " {{ query }}";
+				return "::" + platform + " <query>";
 		}
 	}
 

@@ -30,5 +30,4 @@ Each platform can be enabled or disabled individually in the plugin settings. Th
 - Enable Kick Search
 
 ## Notes
-- Your commands will be visible to others in chat - search responsibly 🙂
 - Using a platform prefix without a query will show you an example of how to use the command

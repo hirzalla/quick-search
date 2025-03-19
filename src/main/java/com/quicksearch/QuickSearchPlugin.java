@@ -62,12 +62,15 @@ public class QuickSearchPlugin extends Plugin {
 		String[] arguments = event.getArguments();
 		if (arguments.length == 0) {
 			String example = getExampleForPlatform(platform);
-			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Usage: " + example, null);
+			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "[Quick Search] Usage: " + example, null);
 			return;
 		}
 
 		if (!isPlatformEnabled(platform)) {
-			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", platform + " search is disabled. Enable it in the plugin settings.", null);
+			if (!config.suppressDisabled()) {
+				client.addChatMessage(ChatMessageType.GAMEMESSAGE, "",
+						"[Quick Search] " + platform + " search is disabled. Enable it in the plugin settings.", null);
+			}
 			return;
 		}
 

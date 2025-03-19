@@ -22,12 +22,14 @@ Type `::<platform> <query>` in your game chat to search.
 - **Prefix**: `::kick`
 - **Example**: `::kick streamer`
 
-## Configurations
-Each platform can be enabled or disabled individually in the plugin settings. The settings menu shows example commands for each platform:
+## Settings
+### General
+- Suppress disabled message: Hide notifications when using disabled platforms
+
+### Platforms
 - Enable Wiki Search
 - Enable YouTube Search
 - Enable Twitch Search
 - Enable Kick Search
 
-## Notes
-- Using a platform prefix without a query will show you an example of how to use the command
+Each platform can be individually enabled/disabled. Using a command without a query will show usage example.

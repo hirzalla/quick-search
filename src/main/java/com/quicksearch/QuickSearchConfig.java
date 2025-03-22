@@ -35,7 +35,7 @@ public interface QuickSearchConfig extends Config {
 	@ConfigItem(
 			keyName = "enableWiki",
 			name = "Enable Wiki Search",
-			description = "Enables OSRS Wiki search (::osrs or ::wiki)",
+			description = "Enables OSRS Wiki search (::w or ::osrs)",
 			position = 0,
 			section = platformsSection
 	)
@@ -44,10 +44,21 @@ public interface QuickSearchConfig extends Config {
 	}
 
 	@ConfigItem(
+			keyName = "enableGoogle",
+			name = "Enable Google Search",
+			description = "Enables Google search (::g or ::google)",
+			position = 1,
+			section = platformsSection
+	)
+	default boolean enableGoogle() {
+		return true;
+	}
+
+	@ConfigItem(
 			keyName = "enableYoutube",
 			name = "Enable YouTube Search",
 			description = "Enables YouTube search (::yt or ::youtube)",
-			position = 1,
+			position = 2,
 			section = platformsSection
 	)
 	default boolean enableYoutube() {
@@ -58,7 +69,7 @@ public interface QuickSearchConfig extends Config {
 			keyName = "enableKick",
 			name = "Enable Kick Search",
 			description = "Enables Kick search (::kick)",
-			position = 2,
+			position = 3,
 			section = platformsSection
 	)
 	default boolean enableKick() {
@@ -69,7 +80,7 @@ public interface QuickSearchConfig extends Config {
 			keyName = "enableTwitch",
 			name = "Enable Twitch Search",
 			description = "Enables Twitch search (::ttv or ::twitch)",
-			position = 3,
+			position = 4,
 			section = platformsSection
 	)
 	default boolean enableTwitch() {

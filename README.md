@@ -7,8 +7,12 @@ Type `::<platform> <query>` in your game chat to search.
 ## Supported Platforms
 
 ### [OSRS Wiki](https://oldschool.runescape.wiki/)
-- **Prefixes**: `::wiki`, `::osrs`
+- **Prefixes**: `::w`, `::osrs`
 - **Example**: `::osrs abyssal whip`
+
+### Google
+- **Prefixes**: `::g`, `::google`
+- **Example**: `::g is it normal to play osrs at work`
 
 ### YouTube
 - **Prefixes**: `::yt`, `::youtube`
@@ -28,6 +32,7 @@ Type `::<platform> <query>` in your game chat to search.
 
 ### Platforms
 - Enable Wiki Search
+- Enable Google Search
 - Enable YouTube Search
 - Enable Twitch Search
 - Enable Kick Search

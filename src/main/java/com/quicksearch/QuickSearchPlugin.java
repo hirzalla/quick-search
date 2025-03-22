@@ -36,8 +36,11 @@ public class QuickSearchPlugin extends Plugin {
 
 	private void initializeUrlPatterns() {
 		// Wiki
+		URL_PATTERNS.put("w", "https://oldschool.runescape.wiki/w/%s");
 		URL_PATTERNS.put("osrs", "https://oldschool.runescape.wiki/w/%s");
-		URL_PATTERNS.put("wiki", "https://oldschool.runescape.wiki/w/%s");
+		// Google
+		URL_PATTERNS.put("g", "https://www.google.com/search?q=%s");
+		URL_PATTERNS.put("google", "https://www.google.com/search?q=%s");
 		// YouTube
 		URL_PATTERNS.put("yt", "https://www.youtube.com/results?search_query=%s");
 		URL_PATTERNS.put("youtube", "https://www.youtube.com/results?search_query=%s");
@@ -82,9 +85,12 @@ public class QuickSearchPlugin extends Plugin {
 
 	private String getExampleForPlatform(String platform) {
 		switch (platform) {
-			case "wiki":
+			case "w":
 			case "osrs":
-				return "::osrs abyssal whip";
+				return "::w abyssal whip";
+			case "google":
+			case "g":
+				return "::g latest news";
 			case "youtube":
 			case "yt":
 				return "::yt zulrah guide";
@@ -100,9 +106,12 @@ public class QuickSearchPlugin extends Plugin {
 
 	private boolean isPlatformEnabled(String platform) {
 		switch (platform) {
-			case "wiki":
+			case "w":
 			case "osrs":
 				return config.enableWiki();
+			case "google":
+			case "g":
+				return config.enableGoogle();
 			case "youtube":
 			case "yt":
 				return config.enableYoutube();

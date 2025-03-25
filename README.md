@@ -1,4 +1,7 @@
 # Quick Search
+[![Active Installs](http://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/installs/plugin/quick-search)](https://runelite.net/plugin-hub/show/quick-search)
+[![Plugin Rank](http://img.shields.io/endpoint?url=https://api.runelite.net/pluginhub/shields/rank/plugin/quick-search)](https://runelite.net/plugin-hub/show/quick-search)
+
 A plugin that lets you search various OSRS-related platforms directly from your game chat using different commands.
 
 ## Usage
@@ -9,10 +12,6 @@ Type `::<platform> <query>` in your game chat to search.
 ### [OSRS Wiki](https://oldschool.runescape.wiki/)
 - **Prefixes**: `::w`, `::osrs`
 - **Example**: `::osrs abyssal whip`
-
-### Google
-- **Prefixes**: `::g`, `::google`
-- **Example**: `::g is it normal to play osrs at work`
 
 ### YouTube
 - **Prefixes**: `::yt`, `::youtube`
@@ -25,6 +24,10 @@ Type `::<platform> <query>` in your game chat to search.
 ### Kick
 - **Prefix**: `::kick`
 - **Example**: `::kick streamer`
+
+### Google
+- **Prefixes**: `::g`, `::google`
+- **Example**: `::g latest news`
 
 ## Settings
 ### General
